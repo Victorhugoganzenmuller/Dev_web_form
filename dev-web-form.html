@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulario</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: none;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        main section {
+            display: none;
+        }
+
+        section.pagina1 {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <section class="pagina1">
+            <h1>
+                Bem-vindo(a)!
+            </h1>
+            <p>
+                Para começar, qual é o seu nome?
+            </p>
+            <form action="#">
+                <input type="text" placeholder="Digite seu nome aqui">
+                <button type="button" onclick="vaiParaPagina2()">
+                    Próximo
+                </button>
+            </form>
+        </section>
+        <section class="pagina2">
+            <h1>
+                <span>Fulano</span>, você estuda no IFC?
+            </h1>
+            <form action="#">
+                <label>
+                    <input type="radio" name="estudante" value="1">Sim
+                </label>
+                <label>
+                    <input type="radio" name="estudante" value="0">Não
+                </label>
+                <button type="button" onclick="vaiParaPagina3()">
+                    Próximo
+                </button>
+            </form>
+        </section>
+        <section class="pagina3">
+            <h1>
+                Qual turma você pertence?
+            </h1>
+            <form action="#">
+                <label for="turma">
+                    Turma
+                </label>
+                <select name="turma" id="turma">
+                    <option value="1">1info1</option>
+                    <option value="2">1info2</option>
+                    <option value="3">1info3</option>
+                    <option value="4">1agro1</option>
+                    <option value="5">1agro2</option>
+                    <option value="6">1agro3</option>
+                    <option value="7">1quimi</option>
+                </select>
+                <button type="button">
+                    Próximo
+                </button>
+            </form>
+        </section>
+        <section class="pagina4">
+            <h1>
+                Saudações,<span>Fulano</span>
+            </h1>
+            <p>Você estuda na turma 1infoX</p>
+
+            <button type="button">
+                Continuar
+            </button>
+        </section>
+    </main>
+
+    <script>
+        const pagina1 = document.querySelector("section.pagina1");
+        const pagina2 = document.querySelector("section.pagina2");
+        const pagina3 = document.querySelector("section.pagina3");
+        const pagina4 = document.querySelector("section.pagina4");
+        let nome = "";
+
+        function vaiParaPagina2() {
+            pagina1.style.display = "none"
+            pagina2.style.display = "block"
+            nome = document.querySelector(".pagina1 input").value
+            document.querySelector(".pagina2 span").innerHTML = nome
+            document.querySelector(".pagina4 span").innerHTML = nome
+        }
+        function vaiParaPagina3() {
+            pagina2.style.display = "none"
+            let estudante = document.querySelector(".pagina2 input:checked").value
+            if (estudante == 1) {
+                pagina3.style.display = "block"
+            } else {
+                pagina4.style.display = "block"
+                let paragrafo = document.querySelector(".pagina4 p")
+            }
+        }
+    </script>
+</body>
+
+</html>
